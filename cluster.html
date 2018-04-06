@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Tugas Cluster</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="css/owl.carousel.css" />
+	<link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+		<style>
+	       #map {
+	        height: 550px;
+	        width: 100%;
+	       }
+	    </style>
+</head>
+
+<body>
+	<!-- Header -->
+	<header id="home">
+		<!-- Background Image -->
+		<div class="bg-img" style="background-image: url('./img/background1.jpg');">
+			<div class="overlay"></div>
+		</div>
+		<!-- /Background Image -->
+
+		<!-- Nav -->
+		<nav id="nav" class="navbar nav-transparent">
+			<div class="container">
+
+				<div class="navbar-header">
+					<!-- Logo -->
+					<div class="navbar-brand">
+						<a href="index.html">
+							<img class="logo" src="img/logo.png" alt="logo">
+							<img class="logo-alt" src="img/logo-alt.png" alt="logo">
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Collapse nav button -->
+					<div class="nav-collapse">
+						<span></span>
+					</div>
+					<!-- /Collapse nav button -->
+				</div>
+
+				<!--  Main navigation  -->
+				<ul class="main-nav nav navbar-nav navbar-right">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="marker.html">Marker</a></li>
+					<li><a href="cluster.html">Cluster</a></li>
+					<li><a href="circle.html">Circle</a></li>
+					<li><a href="heatmap.html">Heatmap</a></li>
+					<li><a href="geojson.html">GeoJSON</a></li>
+					<li><a href="https://github.com/L200150103">Contact</a></li>
+				</ul>
+				<!-- /Main navigation -->
+
+			</div>
+		</nav>
+		<!-- /Nav -->
+
+		<!-- home wrapper -->
+		<div class="home-wrapper">
+			<div class="container">
+				<div class="row">
+
+					<!-- home content -->
+					<div id="map"></div>
+						    <script>
+						      function initMap() {
+
+						        var map = new google.maps.Map(document.getElementById('map'), {
+						          zoom: 13,
+						          center: {lat: -7.5578622, lng: 110.7718206}
+						        });
+
+						        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+						        var markers = locations.map(function(location, i) {
+						          return new google.maps.Marker({
+						            position: location,
+						            label: labels[i % labels.length]
+						          });
+						        });
+
+						        var markerCluster = new MarkerClusterer(map, markers,
+						            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+						      }
+						      var locations = [
+						        {lat: -7.5605993, lng: 110.7621244},
+						        {lat: -7.5612879, lng: 110.7646108},
+						        {lat: -7.564343, lng: 110.7645464},
+						        {lat: -7.5580095, lng: 110.7692671},
+						        {lat: -7.5556803, lng: 110.7698277},
+						        {lat: -7.5575628, lng: 110.7699591},
+						        {lat: -7.557951, lng: 110.7763883},
+						        {lat: -7.5475306, lng: 110.7795373},
+						        {lat: -7.556252, lng: 110.7511917},
+						        {lat: -7.5590837, lng: 110.7483512} 
+						      ]
+						    </script>
+						    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+						    </script>
+						    <script async defer
+						    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMimCTVEwZJovoX-3sORcV9Gwv1T-QSOM&libraries=visualization&callback=initMap">
+						    </script>
+						</div></script>
+					<!-- /home content -->
+					
+				</div>
+			</div>
+		</div>
+		<!-- /home wrapper -->
+
+	</header>
+	<!-- /Header -->
+
+	
+
+	<!-- Back to top -->
+	<div id="back-to-top"></div>
+	<!-- /Back to top -->
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- /Preloader -->
+
+	<!-- jQuery Plugins -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>
