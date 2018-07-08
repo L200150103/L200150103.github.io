@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <title>Panorama</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+  <!-- Owl Carousel -->
+  <link type="text/css" rel="stylesheet" href="css/owl.carousel.css" />
+  <link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
+
+  <!-- Magnific Popup -->
+  <link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+    <style>
+         #map {
+          height: 550px;
+          width: 100%;
+         }
+      </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="home">
+    <!-- Background Image -->
+    <div class="bg-img" style="background-image: url('./img/background1.jpg');">
+      <div class="overlay"></div>
+    </div>
+    <!-- /Background Image -->
+
+    <!-- Nav -->
+    <nav id="nav" class="navbar nav-transparent">
+      <div class="container">
+
+        <div class="navbar-header">
+          <!-- Logo -->
+          <div class="navbar-brand">
+            <a href="index.html">
+              <img class="logo" src="img/logo.png" alt="logo">
+              <img class="logo-alt" src="img/logo-alt.png" alt="logo">
+            </a>
+          </div>
+          <!-- /Logo -->
+
+          <!-- Collapse nav button -->
+          <div class="nav-collapse">
+            <span></span>
+          </div>
+          <!-- /Collapse nav button -->
+        </div>
+
+        <!--  Main navigation  -->
+        <ul class="main-nav nav navbar-nav navbar-right">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="marker.html">Marker</a></li>
+          <li><a href="cluster.html">Cluster</a></li>
+          <li><a href="circle.html">Circle</a></li>
+          <li><a href="heatmap.html">Heatmap</a></li>
+          <li><a href="geojson.html">GeoJSON</a></li>
+          <li><a href="panorama.html">Panorama</a></li>
+          <li><a href="stylemap.html">Style Map</a></li>
+          <li><a href="https://github.com/L200150103">Contact</a></li>
+        </ul>
+        <!-- /Main navigation -->
+
+      </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- home wrapper -->
+    <div class="home-wrapper">
+      <div class="container">
+        <div class="row">
+
+                <center>
+                  <div id="map"></div>
+                </center>
+                <script>
+                  function initPano() {
+                      // Set up Street View and initially set it visible. Register the
+                      // custom panorama provider function. Set the StreetView to display
+                      // the custom panorama 'reception' which we check for below.
+                      var panorama = new google.maps.StreetViewPanorama(
+                        document.getElementById('map'), {
+                          pano: 'Objek Wisara Waduk Mulur Bendosari Sukoharjo',
+                          visible: true,
+                          panoProvider: getCustomPanorama
+                      });
+                    }
+                    // Return a pano image given the panoID.
+                    function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
+                      // Note: robust custom panorama methods would require tiled pano data.
+                      // Here we're just using a single tile, set to the tile size and equal
+                      // to the pano "world" size.
+                      //return 'https://developers.google.com/maps/documentation/javascript/examples/full/images/panoReception1024-0.jpg';
+                       return 'PANO_20180707_160250.jpg';
+                    }
+                    // Construct the appropriate StreetViewPanoramaData given
+                    // the passed pano IDs.
+                    function getCustomPanorama(pano, zoom, tileX, tileY) {
+                      if (pano === 'Objek Wisara Waduk Mulur Bendosari Sukoharjo') {
+                        return {
+                          location: {
+                            pano: 'Objek Wisara Waduk Mulur Bendosari Sukoharjo',
+                            description: 'Objek Wisara Waduk Mulur Bendosari Sukoharjo'
+                          },
+                          links: [],
+                          // The text for the copyright control.
+                          copyright: 'Imagery (c) 2010 Google',
+                          // The definition of the tiles for this panorama.
+                          tiles: {
+                            tileSize: new google.maps.Size(1024, 512),
+                            worldSize: new google.maps.Size(1024, 512),
+                            // The heading in degrees at the origin of the panorama
+                            // tile set.
+                            centerHeading: 105,
+                            getTileUrl: getCustomPanoramaTileUrl
+                          }
+                        };
+                      }
+                    }
+                  </script>
+                  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMimCTVEwZJovoX-3sORcV9Gwv1T-QSOM&libraries=visualization&callback=initMap">
+            </script>
+              </div>
+              <div class="content">
+                <h2>Street View</h2>
+                <p>Objek Wisara Waduk Mulur Bendosari Sukoharjo</p>
+              </div>
+            </section>
+          </section>
+      </div>
+
+    <!-- Scripts -->
+      <div id="back-to-top"></div>
+  <!-- /Back to top -->
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <!-- /Preloader -->
+
+  <!-- jQuery Plugins -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+
+  </body>
+
+</html>
